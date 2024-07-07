@@ -4,6 +4,7 @@ use crate::Region;
 use cache::Cache;
 
 use bytemuck::{Pod, Zeroable};
+use wgpu::PipelineCompilationOptions;
 use core::num::NonZeroU64;
 use glyph_brush::ab_glyph::{point, Rect};
 use std::marker::PhantomData;
@@ -308,6 +309,7 @@ fn build<D>(
                     4 => Float32x4,
                 ],
             }],
+            compilation_options: PipelineCompilationOptions::default(),
         },
         primitive: wgpu::PrimitiveState {
             topology: wgpu::PrimitiveTopology::TriangleStrip,
@@ -336,6 +338,7 @@ fn build<D>(
                 }),
                 write_mask: wgpu::ColorWrites::ALL,
             })],
+            compilation_options: PipelineCompilationOptions::default(),
         }),
         multiview: None,
     });
